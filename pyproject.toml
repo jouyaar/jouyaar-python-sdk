@@ -1,0 +1,47 @@
+[project]
+name = "jouyaar"
+version = "0.1.0"
+description = "Official Python SDK for the Jooyar (جویار) agentic search API"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+authors = [{ name = "Jooyar" }]
+keywords = ["jooyar", "jouyaar", "search", "api", "sdk", "iran"]
+dependencies = [
+    "httpx>=0.27",
+    "pydantic>=2.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pytest-asyncio>=0.23",
+    "respx>=0.21",
+    "ruff>=0.9",
+]
+
+[project.urls]
+Homepage = "https://developers.jouyaar.ir"
+Documentation = "https://developers.jouyaar.ir"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/jouyaar"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["F", "E", "W", "I", "UP", "B", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+# Test fixtures carry long inline JSON literals; readability beats wrapping them.
+"tests/*" = ["E501"]
