@@ -1,6 +1,6 @@
 [project]
 name = "jouyaar"
-version = "v0.1.1"
+dynamic = ["version"]
 description = "Official Python SDK for the Jooyar (جویار) agentic search API"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -34,8 +34,11 @@ Homepage = "https://developers.jouyaar.ir"
 Documentation = "https://developers.jouyaar.ir"
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/jouyaar"]
