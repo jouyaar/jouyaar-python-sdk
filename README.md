@@ -4,34 +4,50 @@
 [![Python](https://img.shields.io/pypi/pyversions/jouyaar.svg)](https://pypi.org/project/jouyaar/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-Official Python client for the **Jooyar (جویار)** agentic search API — compare flights, lodging,
-bus, train, retail, and internet plans across Iranian providers from one call.
+<div dir="rtl">
+
+کلاینت رسمی پایتون برای API جست‌وجوی هوشمند **جویار** — مقایسهٔ پرواز، اقامتگاه، اتوبوس، قطار، کالا و
+اینترنت از میان ارائه‌دهندگان ایرانی، تنها با یک فراخوانی.
+
+## نصب
+
+</div>
 
 ```bash
 pip install jouyaar
-# or, with uv:
+# یا با uv:
 uv add jouyaar
 ```
+
+<div dir="rtl">
+
+## شروع سریع
+
+</div>
 
 ```python
 from jouyaar import Jooyaar
 
-client = Jooyaar(api_key="sk_live_…")   # or set JOUYAAR_API_KEY
+client = Jooyaar(api_key="sk_live_…")   # یا متغیر محیطی JOUYAAR_API_KEY
 
 res = client.search(category="flight", prompt="ارزان‌ترین پرواز تهران به مشهد فردا صبح")
 for q in res.quotes:
     print(q.provider, f"{q.price_toman:,} تومان", q.plan_name)
 ```
 
-## Features
+<div dir="rtl">
 
-- Sync (`Jooyaar`) and async (`AsyncJooyaar`) clients
-- Structured (`params=`) or natural-language (`prompt=`) search
-- Typed errors and automatic retry with backoff on 429/5xx
-- Fully type-hinted, Pydantic models
+## امکانات
 
-## Documentation
+- کلاینت هم‌زمان (`Jooyaar`) و ناهم‌زمان (`AsyncJooyaar`)
+- جست‌وجوی ساختاریافته (`params=`) یا با زبان طبیعی (`prompt=`)
+- خطاهای تایپ‌دار و retry خودکار با backoff روی خطاهای `429/5xx`
+- کاملاً type-hinted، با مدل‌های Pydantic
 
-Get an API key and read the full docs at **[developers.jouyaar.ir](https://developers.jouyaar.ir)**.
+## مستندات
 
-MIT licensed.
+کلید API بگیرید و مستندات کامل را در **[developers.jouyaar.ir](https://developers.jouyaar.ir)** بخوانید.
+
+با مجوز MIT منتشر شده است.
+
+</div>
