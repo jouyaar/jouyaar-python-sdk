@@ -3,6 +3,11 @@ name: Release
 on:
   push:
     branches: [main]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing tag to (re)publish to PyPI, e.g. v0.1.2'
+        required: true
 
 jobs:
   release:
@@ -19,23 +24,38 @@ jobs:
 
       - name: Python Semantic Versioning
         id: semver
+        if: github.event_name == 'push'
         uses: mostafaghadimi/python-semantic-versioning@v2.8.1
         with:
           gh_token: ${{ secrets.GITHUB_TOKEN }}
 
-      # A GITHUB_TOKEN-created release does NOT trigger a separate publish workflow,
-      # so build + publish here, in the same run, only when a new version was cut.
-      - name: Check out the new tag
-        if: steps.semver.outputs.released == 'true'
-        run: git checkout ${{ steps.semver.outputs.tag }}
+      # A GITHUB_TOKEN-created release does NOT trigger a separate publish
+      # workflow, so build + publish here in the same run. Publish on a fresh
+      # auto-release, or on a manual dispatch to (re)publish an existing tag.
+      - name: Decide what to publish
+        id: pick
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+            echo "tag=${{ inputs.tag }}" >> "$GITHUB_OUTPUT"
+          elif [ "${{ steps.semver.outputs.released }}" = "true" ]; then
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+            echo "tag=${{ steps.semver.outputs.tag }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out the tag to publish
+        if: steps.pick.outputs.publish == 'true'
+        run: git checkout "${{ steps.pick.outputs.tag }}"
 
       - uses: astral-sh/setup-uv@v5
-        if: steps.semver.outputs.released == 'true'
+        if: steps.pick.outputs.publish == 'true'
 
       - name: Build
-        if: steps.semver.outputs.released == 'true'
+        if: steps.pick.outputs.publish == 'true'
         run: uv build
 
       - name: Publish to PyPI
-        if: steps.semver.outputs.released == 'true'
+        if: steps.pick.outputs.publish == 'true'
         uses: pypa/gh-action-pypi-publish@release/v1
