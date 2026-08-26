@@ -1,6 +1,6 @@
 [project]
 name = "jouyaar"
-version = "0.1.0"
+version = "v0.1.0"
 description = "Official Python SDK for the Jooyar (جویار) agentic search API"
 readme = "README.md"
 requires-python = ">=3.9"
