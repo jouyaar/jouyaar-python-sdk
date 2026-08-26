@@ -5,6 +5,8 @@ bus, train, retail, and internet plans across Iranian providers from one call.
 
 ```bash
 pip install jouyaar
+# or, with uv:
+uv add jouyaar
 ```
 
 ## Quickstart
@@ -14,7 +16,7 @@ from jouyaar import Jooyaar
 
 client = Jooyaar(api_key="sk_live_…")   # or set JOUYAAR_API_KEY
 
-# Structured search — deterministic, LLM-free, cheapest:
+# Structured — pass the fields yourself:
 res = client.search(
     category="flight",
     params={"origin": "THR", "destination": "MHD", "departure_date": "1404-06-10", "passengers": 1},
@@ -23,7 +25,7 @@ res = client.search(
 for q in res.quotes:
     print(q.provider, f"{q.price_toman:,} تومان", q.plan_name)
 
-# Natural-language search — the API extracts the parameters for you:
+# Natural language — the API extracts them for you:
 res = client.search(category="flight", prompt="ارزان‌ترین پرواز تهران به مشهد فردا صبح")
 ```
 
@@ -72,8 +74,8 @@ except AuthenticationError:
     ...                                  # bad/revoked key
 ```
 
-`RateLimitError` (429, per-minute) and 5xx responses are **retried automatically** with backoff
-(honoring `Retry-After`); 4xx are not. Tune with `Jooyaar(max_retries=..., timeout=...)`.
+429s and 5xx are **retried automatically** with backoff (honoring `Retry-After`); other 4xx are not.
+Tune with `Jooyaar(max_retries=..., timeout=...)`.
 
 ## Configuration
 
