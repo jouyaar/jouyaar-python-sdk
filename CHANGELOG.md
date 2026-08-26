@@ -1,6 +1,24 @@
 # CHANGELOG
 
 
+## v0.1.2 (2026-08-26)
+
+### Bug Fixes
+
+- Correct product name spelling Jooyaar/Jooyar -> Jouyaar
+  ([`50484c8`](https://github.com/jouyaar/jouyaar-python-sdk/commit/50484c8c6875e82fdb7aa7c084e794be2b48aa14))
+
+### Build
+
+- **version**: Derive version from git tag via hatch-vcs
+  ([`60c852d`](https://github.com/jouyaar/jouyaar-python-sdk/commit/60c852d34a53360aacb31979144828d247a94f50))
+
+### Chores
+
+- Bump version to v0.1.1 [skip ci]
+  ([`8a448cc`](https://github.com/jouyaar/jouyaar-python-sdk/commit/8a448cc99f4beebeee8eb44e7bab3a6a73ce5e03))
+
+
 ## v0.1.1 (2026-08-26)
 
 ### Bug Fixes
@@ -37,5 +55,5 @@
 
 ### Features
 
-- Initial release — Jouyaar Python SDK v0.1.0
+- Initial release — Jooyar Python SDK v0.1.0
   ([`26a7ba2`](https://github.com/jouyaar/jouyaar-python-sdk/commit/26a7ba296d7551324ac8d9080b4c2766c3231844))
