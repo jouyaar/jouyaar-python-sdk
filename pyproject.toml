@@ -1,12 +1,12 @@
 [project]
 name = "jouyaar"
 dynamic = ["version"]
-description = "Official Python SDK for the Jooyar (جویار) agentic search API"
+description = "Official Python SDK for the Jouyaar (جویار) agentic search API"
 readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
-authors = [{ name = "Jooyar" }]
-keywords = ["jooyar", "jouyaar", "search", "api", "sdk", "iran"]
+authors = [{ name = "Jouyaar" }]
+keywords = ["jouyaar", "search", "api", "sdk", "iran"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",

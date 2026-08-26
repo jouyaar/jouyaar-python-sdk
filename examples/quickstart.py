@@ -3,11 +3,11 @@
     uv run --with . python examples/quickstart.py
 """
 
-from jouyaar import Jooyaar, RateLimitError
+from jouyaar import Jouyaar, RateLimitError
 
 
 def main() -> None:
-    with Jooyaar() as client:  # reads JOUYAAR_API_KEY
+    with Jouyaar() as client:  # reads JOUYAAR_API_KEY
         print("Plan/usage:", client.usage())
 
         print("\nCategories:")

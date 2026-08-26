@@ -1,4 +1,4 @@
-"""Typed response models mirroring the Jooyar API.
+"""Typed response models mirroring the Jouyaar API.
 
 Loosely typed on purpose (``extra="allow"``): the API can add fields without breaking older SDK
 versions. Category-specific quote payloads (flight/bus/lodging/…) are kept as plain dicts so the SDK

@@ -1,4 +1,4 @@
-"""Unit tests for the Jooyar SDK — HTTP is mocked with respx (no live API)."""
+"""Unit tests for the Jouyaar SDK — HTTP is mocked with respx (no live API)."""
 
 import httpx
 import pytest
@@ -6,10 +6,10 @@ import respx
 
 import jouyaar
 from jouyaar import (
-    AsyncJooyaar,
+    AsyncJouyaar,
     AuthenticationError,
     InvalidRequestError,
-    Jooyaar,
+    Jouyaar,
     QuotaExceededError,
     RateLimitError,
 )
@@ -35,8 +35,8 @@ _SEARCH_OK = {
 }
 
 
-def _client() -> Jooyaar:
-    return Jooyaar(api_key=KEY, base_url=BASE, max_retries=2)
+def _client() -> Jouyaar:
+    return Jouyaar(api_key=KEY, base_url=BASE, max_retries=2)
 
 
 @respx.mock
@@ -81,14 +81,14 @@ def test_429_rate_limit_vs_quota():
         return_value=httpx.Response(429, headers={"Retry-After": "42"},
                                     json={"error": {"code": "rate_limit_exceeded", "message": "slow down"}})
     )
-    with Jooyaar(api_key=KEY, base_url=BASE, max_retries=0) as c, pytest.raises(RateLimitError) as ei:
+    with Jouyaar(api_key=KEY, base_url=BASE, max_retries=0) as c, pytest.raises(RateLimitError) as ei:
         c.usage()
     assert ei.value.retry_after == 42
 
     respx.get(f"{BASE}/v1/usage").mock(
         return_value=httpx.Response(429, json={"error": {"code": "quota_exceeded", "message": "done"}})
     )
-    with Jooyaar(api_key=KEY, base_url=BASE, max_retries=0) as c, pytest.raises(QuotaExceededError):
+    with Jouyaar(api_key=KEY, base_url=BASE, max_retries=0) as c, pytest.raises(QuotaExceededError):
         c.usage()
 
 
@@ -125,7 +125,7 @@ def test_retries_on_500_then_succeeds():
 def test_missing_key_raises(monkeypatch):
     monkeypatch.delenv("JOUYAAR_API_KEY", raising=False)
     with pytest.raises(ValueError):
-        Jooyaar(api_key=None, base_url=BASE)
+        Jouyaar(api_key=None, base_url=BASE)
 
 
 @respx.mock
@@ -135,7 +135,7 @@ async def test_async_client():
                                                 "default_sort": "price", "sorts": ["price"],
                                                 "fields": [{"name": "origin", "fa_label": "مبدأ", "required": True}]}])
     )
-    async with AsyncJooyaar(api_key=KEY, base_url=BASE) as c:
+    async with AsyncJouyaar(api_key=KEY, base_url=BASE) as c:
         cats = await c.categories()
     assert cats[0].name == "flight"
     assert cats[0].fields[0].required is True

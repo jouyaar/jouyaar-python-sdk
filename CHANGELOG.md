@@ -37,5 +37,5 @@
 
 ### Features
 
-- Initial release — Jooyar Python SDK v0.1.0
+- Initial release — Jouyaar Python SDK v0.1.0
   ([`26a7ba2`](https://github.com/jouyaar/jouyaar-python-sdk/commit/26a7ba296d7551324ac8d9080b4c2766c3231844))

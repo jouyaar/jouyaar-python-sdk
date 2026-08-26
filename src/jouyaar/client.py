@@ -1,7 +1,7 @@
-"""Sync (:class:`Jooyaar`) and async (:class:`AsyncJooyaar`) API clients.
+"""Sync (:class:`Jouyaar`) and async (:class:`AsyncJouyaar`) API clients.
 
-    from jouyaar import Jooyaar
-    client = Jooyaar()                      # reads JOUYAAR_API_KEY
+    from jouyaar import Jouyaar
+    client = Jouyaar()                      # reads JOUYAAR_API_KEY
     res = client.search(category="flight", prompt="پرواز تهران به مشهد فردا صبح")
     for q in res.quotes:
         print(q.provider, q.price_toman)
@@ -31,7 +31,7 @@ def _resolve_base(base_url: str | None) -> str:
     return (base_url or os.environ.get("JOUYAAR_BASE_URL") or _core.DEFAULT_BASE_URL).rstrip("/")
 
 
-class Jooyaar:
+class Jouyaar:
     """Synchronous client. Use as a context manager, or call :meth:`close` when done."""
 
     def __init__(
@@ -88,14 +88,14 @@ class Jooyaar:
         if self._owns_client:
             self._client.close()
 
-    def __enter__(self) -> Jooyaar:
+    def __enter__(self) -> Jouyaar:
         return self
 
     def __exit__(self, *exc) -> None:
         self.close()
 
 
-class AsyncJooyaar:
+class AsyncJouyaar:
     """Asynchronous client. Use ``async with`` or call :meth:`aclose` when done."""
 
     def __init__(
@@ -150,7 +150,7 @@ class AsyncJooyaar:
         if self._owns_client:
             await self._client.aclose()
 
-    async def __aenter__(self) -> AsyncJooyaar:
+    async def __aenter__(self) -> AsyncJouyaar:
         return self
 
     async def __aexit__(self, *exc) -> None:

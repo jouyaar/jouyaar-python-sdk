@@ -1,4 +1,4 @@
-# Jooyar Python SDK
+# Jouyaar Python SDK
 
 [![PyPI](https://img.shields.io/pypi/v/jouyaar.svg)](https://pypi.org/project/jouyaar/)
 [![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://pypi.org/project/jouyaar/)
@@ -28,9 +28,9 @@ uv add jouyaar
 </div>
 
 ```python
-from jouyaar import Jooyaar
+from jouyaar import Jouyaar
 
-client = Jooyaar(api_key="sk_live_…")   # یا متغیر محیطی JOUYAAR_API_KEY
+client = Jouyaar(api_key="sk_live_…")   # یا متغیر محیطی JOUYAAR_API_KEY
 
 res = client.search(category="flight", prompt="ارزان‌ترین پرواز تهران به مشهد فردا صبح")
 for q in res.quotes:
@@ -41,7 +41,7 @@ for q in res.quotes:
 
 ## امکانات
 
-- کلاینت هم‌زمان (`Jooyaar`) و ناهم‌زمان (`AsyncJooyaar`)
+- کلاینت هم‌زمان (`Jouyaar`) و ناهم‌زمان (`AsyncJouyaar`)
 - جست‌وجوی ساختاریافته (`params=`) یا با زبان طبیعی (`prompt=`)
 - خطاهای تایپ‌دار و retry خودکار با backoff روی خطاهای `429/5xx`
 - کاملاً type-hinted، با مدل‌های Pydantic

@@ -1,6 +1,6 @@
-"""Typed error hierarchy for the Jooyar SDK.
+"""Typed error hierarchy for the Jouyaar SDK.
 
-Every non-2xx API response is raised as a :class:`JooyaarError` subclass carrying the server's
+Every non-2xx API response is raised as a :class:`JouyaarError` subclass carrying the server's
 machine-readable ``code`` and ``request_id`` (quote it to support). Branch on the class:
 
     try:
@@ -14,7 +14,7 @@ machine-readable ``code`` and ``request_id`` (quote it to support). Branch on th
 from typing import Optional
 
 
-class JooyaarError(Exception):
+class JouyaarError(Exception):
     """Base class for all SDK errors."""
 
     def __init__(
@@ -40,19 +40,19 @@ class JooyaarError(Exception):
         return " | ".join(bits)
 
 
-class APIConnectionError(JooyaarError):
+class APIConnectionError(JouyaarError):
     """The request never reached the API (network error, DNS, timeout)."""
 
 
-class AuthenticationError(JooyaarError):
+class AuthenticationError(JouyaarError):
     """401 — missing, invalid, revoked, or expired API key."""
 
 
-class InvalidRequestError(JooyaarError):
+class InvalidRequestError(JouyaarError):
     """400/422 — the request was rejected (bad category, malformed body, …)."""
 
 
-class RateLimitError(JooyaarError):
+class RateLimitError(JouyaarError):
     """429 — per-minute rate limit exceeded. ``retry_after`` is seconds to wait, if provided."""
 
     def __init__(self, message: str, *, retry_after: Optional[int] = None, **kw) -> None:
@@ -60,9 +60,9 @@ class RateLimitError(JooyaarError):
         self.retry_after = retry_after
 
 
-class QuotaExceededError(JooyaarError):
+class QuotaExceededError(JouyaarError):
     """429 — monthly quota exhausted. Upgrade the plan or wait for the next month."""
 
 
-class APIStatusError(JooyaarError):
+class APIStatusError(JouyaarError):
     """Any other non-2xx (e.g. 5xx) response."""

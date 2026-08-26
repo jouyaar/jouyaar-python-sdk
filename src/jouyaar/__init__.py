@@ -1,20 +1,20 @@
-"""Jooyar (جویار) — official Python SDK for the agentic search API.
+"""Jouyaar (جویار) — official Python SDK for the agentic search API.
 
-    from jouyaar import Jooyaar
-    client = Jooyaar(api_key="sk_live_…")   # or set JOUYAAR_API_KEY
+    from jouyaar import Jouyaar
+    client = Jouyaar(api_key="sk_live_…")   # or set JOUYAAR_API_KEY
     res = client.search(category="flight", prompt="پرواز تهران به مشهد فردا صبح")
     for q in res.quotes:
         print(q.provider, q.price_toman)
 """
 
 from ._version import __version__
-from .client import AsyncJooyaar, Jooyaar
+from .client import AsyncJouyaar, Jouyaar
 from .errors import (
     APIConnectionError,
     APIStatusError,
     AuthenticationError,
     InvalidRequestError,
-    JooyaarError,
+    JouyaarError,
     QuotaExceededError,
     RateLimitError,
 )
@@ -32,13 +32,13 @@ from .models import (
 __all__ = [
     "APIConnectionError",
     "APIStatusError",
-    "AsyncJooyaar",
+    "AsyncJouyaar",
     "AuthenticationError",
     "Category",
     "FieldInfo",
     "InvalidRequestError",
-    "Jooyaar",
-    "JooyaarError",
+    "Jouyaar",
+    "JouyaarError",
     "ProviderMeta",
     "QuotaExceededError",
     "Quote",

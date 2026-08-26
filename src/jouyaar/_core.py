@@ -13,7 +13,7 @@ from .errors import (
     APIStatusError,
     AuthenticationError,
     InvalidRequestError,
-    JooyaarError,
+    JouyaarError,
     QuotaExceededError,
     RateLimitError,
 )
@@ -31,7 +31,7 @@ def build_headers(api_key: str) -> dict:
     }
 
 
-def _error_from_body(status: int, body: Any, headers: httpx.Headers) -> JooyaarError:
+def _error_from_body(status: int, body: Any, headers: httpx.Headers) -> JouyaarError:
     """Map an API error envelope (``{"error": {...}}``) to the right exception class."""
     err = body.get("error", {}) if isinstance(body, dict) else {}
     code = err.get("code")
