@@ -1,0 +1,21 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Python Semantic Versioning
+        uses: mostafaghadimi/python-semantic-versioning@v2.8.1
+        with:
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
