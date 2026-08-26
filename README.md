@@ -1,7 +1,7 @@
 # Jooyar Python SDK
 
 [![PyPI](https://img.shields.io/pypi/v/jouyaar.svg)](https://pypi.org/project/jouyaar/)
-[![Python](https://img.shields.io/pypi/pyversions/jouyaar.svg)](https://pypi.org/project/jouyaar/)
+[![Python](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://pypi.org/project/jouyaar/)
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
 <div dir="rtl">
