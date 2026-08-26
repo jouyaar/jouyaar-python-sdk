@@ -7,8 +7,10 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+    environment: pypi
     permissions:
-      contents: write
+      contents: write   # tag + release commit
+      id-token: write   # PyPI Trusted Publishing
     steps:
       - uses: actions/checkout@v4
         with:
@@ -16,6 +18,24 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Python Semantic Versioning
+        id: semver
         uses: mostafaghadimi/python-semantic-versioning@v2.8.1
         with:
           gh_token: ${{ secrets.GITHUB_TOKEN }}
+
+      # A GITHUB_TOKEN-created release does NOT trigger a separate publish workflow,
+      # so build + publish here, in the same run, only when a new version was cut.
+      - name: Check out the new tag
+        if: steps.semver.outputs.released == 'true'
+        run: git checkout ${{ steps.semver.outputs.tag }}
+
+      - uses: astral-sh/setup-uv@v5
+        if: steps.semver.outputs.released == 'true'
+
+      - name: Build
+        if: steps.semver.outputs.released == 'true'
+        run: uv build
+
+      - name: Publish to PyPI
+        if: steps.semver.outputs.released == 'true'
+        uses: pypa/gh-action-pypi-publish@release/v1
