@@ -28,9 +28,9 @@ uv add jouyaar
 </div>
 
 ```python
-from jouyaar import Jouyaar
+from jouyaar import Agent
 
-client = Jouyaar(api_key="sk_live_…")   # یا متغیر محیطی JOUYAAR_API_KEY
+client = Agent(api_key="sk_live_…")   # یا متغیر محیطی JOUYAAR_API_KEY
 
 res = client.search(category="flight", prompt="ارزان‌ترین پرواز تهران به مشهد فردا صبح")
 for q in res.quotes:
@@ -41,7 +41,7 @@ for q in res.quotes:
 
 ## امکانات
 
-- کلاینت هم‌زمان (`Jouyaar`) و ناهم‌زمان (`AsyncJouyaar`)
+- کلاینت هم‌زمان (`Agent`) و ناهم‌زمان (`AsyncAgent`)
 - جست‌وجوی ساختاریافته (`params=`) یا با زبان طبیعی (`prompt=`)
 - خطاهای تایپ‌دار و retry خودکار با backoff روی خطاهای `429/5xx`
 - کاملاً type-hinted، با مدل‌های Pydantic

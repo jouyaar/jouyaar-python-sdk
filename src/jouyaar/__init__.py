@@ -1,14 +1,18 @@
 """Jouyaar (جویار) — official Python SDK for the agentic search API.
 
-    from jouyaar import Jouyaar
-    client = Jouyaar(api_key="sk_live_…")   # or set JOUYAAR_API_KEY
+    from jouyaar import Agent
+    client = Agent(api_key="sk_live_…")   # or set JOUYAAR_API_KEY
     res = client.search(category="flight", prompt="پرواز تهران به مشهد فردا صبح")
     for q in res.quotes:
         print(q.provider, q.price_toman)
 """
 
 from ._version import __version__
-from .client import AsyncJouyaar, Jouyaar
+from .client import Agent, AsyncAgent
+
+# Backwards-compat aliases for the pre-rename class names (≤ v0.1.2). Not documented; prefer Agent.
+Jouyaar = Agent
+AsyncJouyaar = AsyncAgent
 from .errors import (
     APIConnectionError,
     APIStatusError,
@@ -32,12 +36,12 @@ from .models import (
 __all__ = [
     "APIConnectionError",
     "APIStatusError",
-    "AsyncJouyaar",
+    "Agent",
+    "AsyncAgent",
     "AuthenticationError",
     "Category",
     "FieldInfo",
     "InvalidRequestError",
-    "Jouyaar",
     "JouyaarError",
     "ProviderMeta",
     "QuotaExceededError",
