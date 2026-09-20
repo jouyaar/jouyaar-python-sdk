@@ -43,7 +43,9 @@ jobs:
             raw=""; echo "publish=false" >> "$GITHUB_OUTPUT"
           fi
           # The semver action can emit a doubled leading v (vv1.0.1); collapse to a single v.
-          [ -n "$raw" ] && echo "tag=v$(printf '%s' "$raw" | sed 's/^v*//')" >> "$GITHUB_OUTPUT"
+          if [ -n "$raw" ]; then
+            echo "tag=v$(printf '%s' "$raw" | sed 's/^v*//')" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Check out the tag to publish
         if: steps.pick.outputs.publish == 'true'
