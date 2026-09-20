@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v1.0.1 (2026-09-20)
+
+### Bug Fixes
+
+- **client**: Satisfy ruff — sort imports, move compat aliases below imports
+  ([`ecf135e`](https://github.com/jouyaar/jouyaar-python-sdk/commit/ecf135e2ab13a8ba31dfeb76e94e9c4710b5ba88))
+
+
 ## v1.0.0 (2026-09-20)
 
 ### Ci
