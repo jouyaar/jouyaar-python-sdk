@@ -6,10 +6,10 @@ import respx
 
 import jouyaar
 from jouyaar import (
+    Agent,
     AsyncAgent,
     AuthenticationError,
     InvalidRequestError,
-    Agent,
     QuotaExceededError,
     RateLimitError,
 )

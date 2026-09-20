@@ -9,10 +9,6 @@
 
 from ._version import __version__
 from .client import Agent, AsyncAgent
-
-# Backwards-compat aliases for the pre-rename class names (≤ v0.1.2). Not documented; prefer Agent.
-Jouyaar = Agent
-AsyncJouyaar = AsyncAgent
 from .errors import (
     APIConnectionError,
     APIStatusError,
@@ -32,6 +28,10 @@ from .models import (
     Seller,
     Usage,
 )
+
+# Backwards-compat aliases for the pre-rename class names (≤ v0.1.2). Not documented; prefer Agent.
+Jouyaar = Agent
+AsyncJouyaar = AsyncAgent
 
 __all__ = [
     "APIConnectionError",
