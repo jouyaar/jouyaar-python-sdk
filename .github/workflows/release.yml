@@ -36,14 +36,14 @@ jobs:
         id: pick
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "publish=true" >> "$GITHUB_OUTPUT"
-            echo "tag=${{ inputs.tag }}" >> "$GITHUB_OUTPUT"
+            raw="${{ inputs.tag }}"; echo "publish=true" >> "$GITHUB_OUTPUT"
           elif [ "${{ steps.semver.outputs.released }}" = "true" ]; then
-            echo "publish=true" >> "$GITHUB_OUTPUT"
-            echo "tag=${{ steps.semver.outputs.tag }}" >> "$GITHUB_OUTPUT"
+            raw="${{ steps.semver.outputs.tag }}"; echo "publish=true" >> "$GITHUB_OUTPUT"
           else
-            echo "publish=false" >> "$GITHUB_OUTPUT"
+            raw=""; echo "publish=false" >> "$GITHUB_OUTPUT"
           fi
+          # The semver action can emit a doubled leading v (vv1.0.1); collapse to a single v.
+          [ -n "$raw" ] && echo "tag=v$(printf '%s' "$raw" | sed 's/^v*//')" >> "$GITHUB_OUTPUT"
 
       - name: Check out the tag to publish
         if: steps.pick.outputs.publish == 'true'
