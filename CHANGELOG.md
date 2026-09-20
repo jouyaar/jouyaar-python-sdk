@@ -1,6 +1,22 @@
 # CHANGELOG
 
 
+## v1.0.0 (2026-09-20)
+
+### Ci
+
+- Add manual workflow_dispatch to (re)publish a tag to PyPI
+  ([`e0f5f80`](https://github.com/jouyaar/jouyaar-python-sdk/commit/e0f5f8037afae837382fac3cf0ca4304400d9620))
+
+- Publish to PyPI in the release job (GITHUB_TOKEN releases don't trigger workflows)
+  ([`e40b3ac`](https://github.com/jouyaar/jouyaar-python-sdk/commit/e40b3ac4a6a26ffb997f4cda0856c1892b4547ab))
+
+### Features
+
+- **client**: Rename client class to Agent (Jouyaar kept as alias)
+  ([`6004026`](https://github.com/jouyaar/jouyaar-python-sdk/commit/60040262a1380640c05adb27b3665ea67131cade))
+
+
 ## v0.1.2 (2026-08-26)
 
 ### Bug Fixes
