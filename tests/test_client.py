@@ -106,8 +106,8 @@ def test_retries_on_500_then_succeeds():
     route = respx.get(f"{BASE}/v1/usage").mock(
         side_effect=[httpx.Response(500), httpx.Response(200, json={
             "plan": "free", "rate_limit_per_min": 30, "rate_used_this_minute": 1,
-            "monthly_quota": 1000, "monthly_used": 0, "monthly_remaining": 1000,
-            "monthly_reset": "2026-09-01T00:00:00+00:00"})]
+            "daily_quota": 10, "daily_used": 0, "daily_remaining": 10,
+            "daily_reset": "2026-09-01T20:30:00+00:00"})]
     )
     # retry_delay would sleep on 500; patch it to no-op via max backoff of 0 by monkeypatching time.
     import jouyaar._core as core

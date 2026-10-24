@@ -61,7 +61,7 @@ class RateLimitError(JouyaarError):
 
 
 class QuotaExceededError(JouyaarError):
-    """429 — monthly quota exhausted. Upgrade the plan or wait for the next month."""
+    """429 — daily quota exhausted. Upgrade the plan or wait for Asia/Tehran midnight."""
 
 
 class APIStatusError(JouyaarError):

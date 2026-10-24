@@ -94,10 +94,10 @@ class Usage(_Base):
     plan: str
     rate_limit_per_min: int
     rate_used_this_minute: int
-    monthly_quota: int
-    monthly_used: int
-    monthly_remaining: int
-    monthly_reset: str
+    daily_quota: int
+    daily_used: int
+    daily_remaining: int
+    daily_reset: str
 
 
 # Re-export for `from jouyaar.models import *`
