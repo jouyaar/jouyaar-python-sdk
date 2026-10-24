@@ -1,6 +1,22 @@
 # CHANGELOG
 
 
+## v2.0.0 (2026-10-24)
+
+### Ci
+
+- **release**: Collapse doubled leading v in tag before checkout
+  ([`ef533c3`](https://github.com/jouyaar/jouyaar-python-sdk/commit/ef533c34fd6890b378df435f3593e9563a6fd8a5))
+
+- **release**: Use if-block so publish=false path doesn't trip set -e
+  ([`ae76837`](https://github.com/jouyaar/jouyaar-python-sdk/commit/ae7683737c0d04d2d8352afcf1b5acf387dc4a65))
+
+### Features
+
+- **models**: Usage reports a daily quota (daily_* replaces monthly_*)
+  ([`3e074f0`](https://github.com/jouyaar/jouyaar-python-sdk/commit/3e074f03ef993fecf7f89c46ac7f0ee5c3af9598))
+
+
 ## v1.0.1 (2026-09-20)
 
 ### Bug Fixes
