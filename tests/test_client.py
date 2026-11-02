@@ -26,7 +26,8 @@ _SEARCH_OK = {
     "results": {
         "quotes": [
             {"provider": "علی‌بابا", "plan_name": "W5 1234", "price_toman": 2_500_000,
-             "deep_link": "https://alibaba.ir/x", "flight": {"airline": "وارش"}}
+             "deep_link": "https://alibaba.ir/x", "flight": {"airline": "وارش"}},
+            {"provider": "دنج", "plan_name": "میز کار", "price_toman": 150_000, "place": {"area": "ونک"}},
         ],
         "applied_sort": "price",
         "available_sorts": ["price", "recommended"],
@@ -48,6 +49,7 @@ def test_search_params_mode_and_auth_header():
     assert res.quotes[0].provider == "علی‌بابا"
     assert res.quotes[0].price_toman == 2_500_000
     assert res.quotes[0].flight["airline"] == "وارش"  # loose vertical payload preserved
+    assert res.quotes[1].place["area"] == "ونک" and res.quotes[1].flight is None
     sent = route.calls.last.request
     assert sent.headers["authorization"] == f"Bearer {KEY}"
     assert "jouyaar-python/" in sent.headers["user-agent"]

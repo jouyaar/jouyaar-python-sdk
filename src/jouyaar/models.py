@@ -53,6 +53,12 @@ class Quote(_Base):
     lodging: Optional[dict] = None
     retail: Optional[dict] = None
     internet: Optional[dict] = None
+    pharmacy: Optional[dict] = None
+    event: Optional[dict] = None
+    car: Optional[dict] = None
+    doctor: Optional[dict] = None
+    tour: Optional[dict] = None
+    place: Optional[dict] = None  # coworking spaces (and other place-like results)
     raw: dict = Field(default_factory=dict)
 
 
