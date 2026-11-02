@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.2.0 (2026-11-02)
+
+### Features
+
+- **usage**: Monthly quota fields and pack credits
+  ([`a1bf92c`](https://github.com/jouyaar/jouyaar-python-sdk/commit/a1bf92c9235a7a6540fbc2a1c04e84a520b82400))
+
+
 ## v2.1.0 (2026-11-02)
 
 ### Features
