@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v2.1.0 (2026-11-02)
+
+### Features
+
+- **models**: Typed payloads for every live category
+  ([`7c672bd`](https://github.com/jouyaar/jouyaar-python-sdk/commit/7c672bdfebfb9d823ffd00c889a82243a18372f2))
+
+
 ## v2.0.0 (2026-10-24)
 
 ### Ci
